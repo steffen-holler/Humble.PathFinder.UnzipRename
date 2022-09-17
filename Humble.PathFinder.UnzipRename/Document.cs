@@ -139,6 +139,11 @@ namespace Humble.PathFinder.UnzipRename
             return fileName.Trim() + ext;
         }
 
+        /// <summary>
+        /// Trims out the directory to the file path.
+        /// </summary>
+        /// <param name="filePath">File path to be concatenated</param>
+        /// <returns>Name and extension of the file only.</returns>
         internal static string TrimFileName(string filePath)
         {
             string fileName = filePath.Replace('/', '\\');

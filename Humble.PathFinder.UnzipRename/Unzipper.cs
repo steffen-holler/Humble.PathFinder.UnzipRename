@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace Humble.PathFinder.UnzipRename
 {
     /// <summary>
-    /// Main unzipper execution class. 
+    /// Main un-zipper execution class. 
     /// </summary>
     public static class Unzipper
     {
         /// <summary>
-        /// Paizo Archvie unzipper
+        /// Paizo Archive un-zipper
         /// </summary>
         /// <param name="args">
         /// Command line arguments 
