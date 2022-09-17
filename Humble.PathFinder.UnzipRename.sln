@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Humble.PathFinder.UnzipRename", "Humble.PathFinder.UnzipRename\Humble.PathFinder.UnzipRename.csproj", "{DDF2BFE2-C97F-4EDD-8101-911ABFFA796B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Humble.PathFiner.UnzipRename.Test", "Humble.PathFiner.UnzipRename.Test\Humble.PathFiner.UnzipRename.Test.csproj", "{6837C43C-BF76-4DDA-95D1-33964BF4D953}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Humble.PathFinder.UnzipRename.Test", "Humble.PathFiner.UnzipRename.Test\Humble.PathFinder.UnzipRename.Test.csproj", "{6837C43C-BF76-4DDA-95D1-33964BF4D953}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -14,4 +14,8 @@
     <PackageReference Include="coverlet.collector" Version="3.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Humble.PathFinder.UnzipRename\Humble.PathFinder.UnzipRename.csproj" />
+  </ItemGroup>
+
 </Project>
