@@ -12,6 +12,9 @@ namespace Humble.PathFinder.UnzipRename
     /// </summary>
     internal class Document
     {
+        private string baseName = "";
+        private string fileName = "";
+
         /// <summary>
         /// Gets the original name of the file assigned by Paizo. 
         /// </summary>
@@ -20,17 +23,26 @@ namespace Humble.PathFinder.UnzipRename
         /// <summary>
         /// Gets the more human readable name for the file.
         /// </summary>
-        public string NewName { get; private set; } = "";
+        public string NewName 
+        {
+            get { return fileName; }
+            internal set
+            {
+                // todo: parse file name
+                fileName = value;
+            }
+        } 
 
         public Document(string orignialName, string zipFolderName)
         {
             OringalName = orignialName;
-            NewName = 
+            baseName = ParseFolderName(zipFolderName);
+
         }
 
-        internal string ParseFolderName(string folderName)
+        internal static string ParseFolderName(string folderName)
         {
-
+            return folderName;
         }
     }
 }
