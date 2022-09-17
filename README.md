@@ -1,8 +1,6 @@
 # Humble.PathFinder.UnzipRename
 
-A simple command line applicaiton to complement the [Pathfiner 2E Humbe Bundle]() and other Paizo Downloads.  This application works to take the Paizo
-names and simplify them to a more human readable version once the zip files are un-zipped.  This does require the user to already posess the \*.zip files
-and to have space to unzip them onto the drive. 
+A simple command line applicaiton to complement the [Pathfiner 2E Humbe Bundle](https://www.humblebundle.com/books/humble-rpg-bundle-pathfinder-second-edition-strength-thousands-paizo-books?hmb_source=humble_home&hmb_medium=product_tile&hmb_campaign=mosaic_section_3_layout_index_3_layout_type_threes_tile_index_3_c_humblerpgbundlepathfindersecondeditionstrengththousandspaizo_bookbundle) and other Paizo Downloads.  This application works to take the Paizo names and simplify them to a more human readable version once the zip files are un-zipped.  This does require the user to already posess the \*.zip files and to have space to unzip them onto the drive. 
 
 > **Note**<br/>
 > this applicaiton does not delete the zip files, but will delete the destination folder if there is a redone.  **Always use a temporary drive location
