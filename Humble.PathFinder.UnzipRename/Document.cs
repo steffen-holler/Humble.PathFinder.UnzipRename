@@ -41,7 +41,7 @@ namespace Humble.PathFinder.UnzipRename
         /// <param name="zipFolderName">Name of the folder the file is within.</param>
         public Document(string fileName, string zipFolderName)
         {
-            OriginalName = fileName;
+            OriginalName = TrimFileName(fileName);
             baseName = ParseFolderName(zipFolderName);
         }
 
@@ -55,6 +55,7 @@ namespace Humble.PathFinder.UnzipRename
             if (string.IsNullOrWhiteSpace(folderName))
                 return string.Empty;
 
+            folderName = TrimFileName(folderName);
             folderName = folderName.Replace(".zip", "");
             folderName = folderName.Replace(".ZIP", "");
 
@@ -100,10 +101,17 @@ namespace Humble.PathFinder.UnzipRename
             fileName = "";
             foreach (string name in names)
             {
+                if (string.IsNullOrWhiteSpace(name))
+                    continue;
                 if (name.StartsWith("PZO"))
                     continue;
-                if (Regex.IsMatch(name, @"\d"))
+                if (Regex.IsMatch(name, @"^[0-9\-]*$"))
                 {
+                    if (name == "-")
+                    {
+                        fileName += name;
+                        continue;
+                    }
                     if (name.Contains("-"))
                     {
                         string[] numbers = name.Split('-');
@@ -129,6 +137,14 @@ namespace Humble.PathFinder.UnzipRename
 
 
             return fileName.Trim() + ext;
+        }
+
+        internal static string TrimFileName(string filePath)
+        {
+            string fileName = filePath.Replace('/', '\\');
+            if (fileName.Contains("\\"))
+                fileName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
+            return fileName;
         }
     }
 }
