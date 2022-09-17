@@ -13,7 +13,7 @@ namespace Humble.PathFinder.UnzipRename.Test
             var newName = Document.ParseFolderName(FolderName);
             Assert.AreEqual(newName, "Pathfinder Adventure Path 174");
 
-            FolderName = "PathfinderAdvancedPlayersGuidePDF-FilePerChapter";
+            FolderName = "PathfinderAdvancedPlayersGuidePDF-FilePerChapter.zip";
             newName = Document.ParseFolderName(FolderName);
             Assert.AreEqual(newName, "Pathfinder Advanced Players Guide");
 
@@ -45,11 +45,27 @@ namespace Humble.PathFinder.UnzipRename.Test
 
 
         [TestMethod]
-        [DataRow("PZO90174E.pdf", "PathfinderAdventurePath174ShadowsOfTheAncientsStrengthOfThousands6Of6PDF-SingleFile")]
-        [DataRow("PZO90174E Interactive Maps.pdf", "PathfinderAdventurePath174ShadowsOfTheAncientsStrengthOfThousands6Of6PDF-SingleFile")]
-        public void TestDocumentConstructor(string file, string folder)
+        public void TestDocumentConstructor()
         {
+            var file = "PZO90174E.pdf";
+            var folder = "PathfinderAdventurePath174ShadowsOfTheAncientsStrengthOfThousands6Of6PDF-SingleFile";
+            var doc = new Document(file, folder);
+            Assert.AreEqual(doc.OriginalName, file);
+            Assert.AreEqual(doc.NewName, "Pathfinder Adventure Path 174.pdf");
 
+            file = "PZO90174E Interactive Maps.pdf";
+            folder = "PathfinderAdventurePath174ShadowsOfTheAncientsStrengthOfThousands6Of6PDF-SingleFile";
+            doc = new Document(file, folder);
+            Assert.AreEqual(doc.NewName, "Pathfinder Adventure Path 174 - Interactive Maps.pdf");
+
+            file = "PZO2105 APG 000 Cover-2nd Printing.pdf";
+            folder = "PathfinderAdvancedPlayersGuidePDF-FilePerChapter";
+            doc = new Document(file, folder);
+            Assert.AreEqual(doc.NewName, "Pathfinder Advanced Players Guide - APG p0 Cover.pdf");
+
+            file = "PZO2105 APG 194-199-2nd Printing.pdf";
+            doc = new Document(file, folder);
+            Assert.AreEqual(doc.NewName, "Pathfinder Advanced Players Guide - APG p194-199.pdf");
         }
     }
 }

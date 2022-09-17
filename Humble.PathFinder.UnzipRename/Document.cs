@@ -17,7 +17,7 @@ namespace Humble.PathFinder.UnzipRename
         /// <summary>
         /// Gets the original name of the file assigned by Paizo. 
         /// </summary>
-        public string OringalName { get; private set; } = "";
+        public string OriginalName { get; private set; } = "";
         
         /// <summary>
         /// Gets the more human readable name for the file.
@@ -26,20 +26,37 @@ namespace Humble.PathFinder.UnzipRename
         {
             get
             {
-                return baseName + ParseFileName(OringalName);
+                var fileName = ParseFileName(OriginalName);
+                if (fileName.StartsWith("."))
+                    return baseName + fileName;
+                else 
+                    return baseName + " - " + fileName;
             }
         } 
 
+        /// <summary>
+        /// Creates a new Paizo Document to be renamed. 
+        /// </summary>
+        /// <param name="fileName">Name of the file path including extension</param>
+        /// <param name="zipFolderName">Name of the folder the file is within.</param>
         public Document(string fileName, string zipFolderName)
         {
-            OringalName = fileName;
+            OriginalName = fileName;
             baseName = ParseFolderName(zipFolderName);
         }
 
+        /// <summary>
+        /// parses the folder name to create the new base file name.
+        /// </summary>
+        /// <param name="folderName">Name of the folder containing the documents</param>
+        /// <returns>Base Name for the documents</returns>
         internal static string ParseFolderName(string folderName)
         {
             if (string.IsNullOrWhiteSpace(folderName))
                 return string.Empty;
+
+            folderName = folderName.Replace(".zip", "");
+            folderName = folderName.Replace(".ZIP", "");
 
             folderName = folderName.Replace("-SingleFile", "");
             folderName = folderName.Replace("-FilePerChapter", "");
@@ -66,6 +83,11 @@ namespace Humble.PathFinder.UnzipRename
             return splitFolderName.Trim();
         }
 
+        /// <summary>
+        /// parses the file name to create a file name for extra content.
+        /// </summary>
+        /// <param name="fileName">Name of the file to be parsed</param>
+        /// <returns>Additional file names or the file extension to use.</returns>
         internal static string ParseFileName(string fileName)
         {
             string ext = fileName.Substring(fileName.LastIndexOf("."));
